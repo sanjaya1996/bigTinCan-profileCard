@@ -42,19 +42,6 @@
   min-width: 300px;
 }
 
-.formGroup {
-  padding-bottom: var(--spacing);
-}
-
-.formLabel {
-  padding-bottom: calc(var(--spacing) / 2);
-}
-
-.formInput input {
-  padding: calc(var(--spacing) / 2);
-  width: 100%;
-}
-
 .profileForm .row {
   display: flex;
   font-size: 0.8em;

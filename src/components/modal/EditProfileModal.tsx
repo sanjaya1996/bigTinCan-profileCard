@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ModalLayout from './ModalLayout';
 
 import './modal.css';
+import Input, { InputIdType } from '../Input/Input';
 
 interface IModalProps {
   onCloseModal: () => void;
@@ -12,6 +13,72 @@ const EditProfileModal: React.FC<IModalProps> = ({
   onCloseModal,
   onSubmit,
 }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [street, setStreet] = useState('');
+  const [suite, setSuite] = useState('');
+  const [city, setCity] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [phone, setPhone] = useState('');
+  const [website, setWebsite] = useState('');
+  const [profilePic, setProfilePic] = useState('');
+
+  const submitHandler = () => {
+    const isValid = (value: string) => {
+      return value.trim().length > 0 ? true : false;
+    };
+
+    const formIsValid =
+      isValid(name) &&
+      isValid(email) &&
+      isValid(street) &&
+      isValid(suite) &&
+      isValid(city) &&
+      isValid(zipCode) &&
+      isValid(phone) &&
+      isValid(website);
+
+    if (!formIsValid) {
+      return alert('Form is not Valid, Make sure all fields are not empty');
+    }
+
+    onSubmit();
+  };
+
+  const textChangeHandler = (id: InputIdType, value: string) => {
+    switch (id) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'street':
+        setStreet(value);
+        break;
+      case 'suite':
+        setSuite(value);
+        break;
+      case 'city':
+        setCity(value);
+        break;
+      case 'zipCode':
+        setZipCode(value);
+        break;
+      case 'phone':
+        setPhone(value);
+        break;
+      case 'website':
+        setWebsite(value);
+        break;
+      case 'profilePic':
+        setProfilePic(value);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <ModalLayout>
       <div className='editProfile'>
@@ -20,47 +87,35 @@ const EditProfileModal: React.FC<IModalProps> = ({
         </span>
         <h1>Add a new Profile</h1>
         <form className='profileForm'>
-          <div className='formGroup'>
-            <div className='formLabel'>
-              <label htmlFor='name'> Name</label>
-            </div>
-            <div className='formInput'>
-              <input
-                type='text'
-                id='name'
-                name='name'
-                placeholder='Your name...'
-              />
-            </div>
-          </div>
+          <Input
+            label='Name'
+            type='text'
+            id='name'
+            name='name'
+            value={name}
+            placeHolder='Your name...'
+            handleChange={textChangeHandler}
+          />
 
-          <div className='formGroup'>
-            <div className='formLabel'>
-              <label htmlFor='profilePic'>Profile Picture</label>
-            </div>
-            <div className='formInput'>
-              <input
-                type='file'
-                id='lName'
-                name='lastName'
-                placeholder='Your last name...'
-              />
-            </div>
-          </div>
+          <Input
+            label='Profile Picture'
+            type='file'
+            id='profilePic'
+            name='profilePic'
+            value={profilePic}
+            placeHolder='Your picture...'
+            handleChange={textChangeHandler}
+          />
 
-          <div className='formGroup'>
-            <div className='formLabel'>
-              <label htmlFor='email'>Email</label>
-            </div>
-            <div className='formInput'>
-              <input
-                type='text'
-                id='email'
-                name='email'
-                placeholder='Your email...'
-              />
-            </div>
-          </div>
+          <Input
+            label='Email'
+            type='text'
+            id='email'
+            name='email'
+            value={email}
+            placeHolder='Your email...'
+            handleChange={textChangeHandler}
+          />
 
           <div className='formGroup'>
             <div className='formLabel'>
@@ -69,99 +124,75 @@ const EditProfileModal: React.FC<IModalProps> = ({
             <div className='addressGroup'>
               <div className='row'>
                 <div className='column'>
-                  <div className='formGroup'>
-                    <div className='formLabel'>
-                      <label htmlFor='street'>Street</label>
-                    </div>
-                    <div className='formInput'>
-                      <input
-                        type='text'
-                        id='street'
-                        name='street'
-                        placeholder='Street name...'
-                      />
-                    </div>
-                  </div>
+                  <Input
+                    label='Street'
+                    type='text'
+                    id='street'
+                    name='street'
+                    value={street}
+                    placeHolder='Street name...'
+                    handleChange={textChangeHandler}
+                  />
                 </div>
                 <div className='column'>
-                  <div className='formGroup'>
-                    <div className='formLabel'>
-                      <label htmlFor='sute'>Appartment, Suite, etc</label>
-                    </div>
-                    <div className='formInput'>
-                      <input
-                        type='text'
-                        id='suite'
-                        name='suite'
-                        placeholder='Appartment, Suite, etc...'
-                      />
-                    </div>
-                  </div>
+                  <Input
+                    label='Appartment / Suite'
+                    type='text'
+                    id='suite'
+                    name='suite'
+                    value={suite}
+                    placeHolder='Appartment, Suite, etc...'
+                    handleChange={textChangeHandler}
+                  />
                 </div>
               </div>
 
               <div className='row'>
                 <div className='column'>
-                  <div className='formGroup'>
-                    <div className='formLabel'>
-                      <label htmlFor='city'>City</label>
-                    </div>
-                    <div className='formInput'>
-                      <input
-                        type='text'
-                        id='city'
-                        name='city'
-                        placeholder='Your city...'
-                      />
-                    </div>
-                  </div>
+                  <Input
+                    label='City'
+                    type='text'
+                    id='city'
+                    name='city'
+                    value={city}
+                    placeHolder='Your city...'
+                    handleChange={textChangeHandler}
+                  />
                 </div>
                 <div className='column'>
-                  <div className='formGroup'>
-                    <div className='formLabel'>
-                      <label htmlFor='zipCode'>Zip Code</label>
-                    </div>
-                    <div className='formInput'>
-                      <input
-                        type='text'
-                        id='zipCode'
-                        name='zipCode'
-                        placeholder='Your zipCode...'
-                      />
-                    </div>
-                  </div>
+                  <Input
+                    label='Zip Code'
+                    type='text'
+                    id='zipCode'
+                    name='zipCode'
+                    value={zipCode}
+                    placeHolder='Your zipCode...'
+                    handleChange={textChangeHandler}
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className='formGroup'>
-            <div className='formLabel'>
-              <label htmlFor='phoneNumber'>Phone Number</label>
-            </div>
-            <div className='formInput'>
-              <input
-                type='text'
-                id='phoneNumber'
-                name='phoneNumber'
-                placeholder='Your name...'
-              />
-            </div>
-          </div>
+          <Input
+            label='Phone Number'
+            type='text'
+            id='phone'
+            name='phoneNumber'
+            value={phone}
+            placeHolder='Your name...'
+            handleChange={textChangeHandler}
+          />
 
-          <div className='formGroup'>
-            <div className='formLabel'>
-              <label htmlFor='website'>Website</label>
-            </div>
-            <div className='formInput'>
-              <input
-                type='text'
-                id='website'
-                name='website'
-                placeholder='Your website url...'
-              />
-            </div>
-          </div>
+          <Input
+            label='Website'
+            type='text'
+            id='website'
+            name='website'
+            value={website}
+            placeHolder='Your website url...'
+            handleChange={textChangeHandler}
+          />
 
           <div className='buttonsContainer'>
             <div className='cancelButton'>
@@ -170,7 +201,7 @@ const EditProfileModal: React.FC<IModalProps> = ({
               </button>
             </div>
             <div className='submitButton'>
-              <button type='button' onClick={() => onSubmit()}>
+              <button type='button' onClick={submitHandler}>
                 Add
               </button>
             </div>

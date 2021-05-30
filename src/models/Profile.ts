@@ -4,6 +4,20 @@ interface IAddress {
   city: string;
   zipcode: string;
 }
+
+export class Address implements IAddress {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  constructor(street: string, suite: string, city: string, zipcode: string) {
+    this.street = street;
+    this.suite = suite;
+    this.city = city;
+    this.zipcode = zipcode;
+  }
+}
+
 class Profile {
   readonly id: string;
   name: string;
