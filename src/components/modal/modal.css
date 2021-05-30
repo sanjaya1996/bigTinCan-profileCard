@@ -55,6 +55,15 @@
   width: 100%;
 }
 
+.profileForm .row {
+  display: flex;
+  font-size: 0.8em;
+}
+
+.profileForm .row .column {
+  padding-right: var(--spacing);
+}
+
 .buttonsContainer {
   display: flex;
   justify-content: space-between;

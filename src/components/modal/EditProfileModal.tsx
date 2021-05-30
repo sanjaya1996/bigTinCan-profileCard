@@ -22,27 +22,14 @@ const EditProfileModal: React.FC<IModalProps> = ({
         <form className='profileForm'>
           <div className='formGroup'>
             <div className='formLabel'>
-              <label htmlFor='firstName'>First Name</label>
+              <label htmlFor='name'> Name</label>
             </div>
             <div className='formInput'>
               <input
                 type='text'
-                id='fName'
-                name='firstName'
-                placeholder='Your first name...'
-              />
-            </div>
-          </div>
-          <div className='formGroup'>
-            <div className='formLabel'>
-              <label htmlFor='lastName'>Last Name</label>
-            </div>
-            <div className='formInput'>
-              <input
-                type='text'
-                id='lName'
-                name='lastName'
-                placeholder='Your last name...'
+                id='name'
+                name='name'
+                placeholder='Your name...'
               />
             </div>
           </div>
@@ -79,13 +66,72 @@ const EditProfileModal: React.FC<IModalProps> = ({
             <div className='formLabel'>
               <label htmlFor='homeAddress'>Home Address</label>
             </div>
-            <div className='formInput'>
-              <input
-                type='text'
-                id='homeAddress'
-                name='homeAddress'
-                placeholder='Your address...'
-              />
+            <div className='addressGroup'>
+              <div className='row'>
+                <div className='column'>
+                  <div className='formGroup'>
+                    <div className='formLabel'>
+                      <label htmlFor='street'>Street</label>
+                    </div>
+                    <div className='formInput'>
+                      <input
+                        type='text'
+                        id='street'
+                        name='street'
+                        placeholder='Street name...'
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className='column'>
+                  <div className='formGroup'>
+                    <div className='formLabel'>
+                      <label htmlFor='sute'>Appartment, Suite, etc</label>
+                    </div>
+                    <div className='formInput'>
+                      <input
+                        type='text'
+                        id='suite'
+                        name='suite'
+                        placeholder='Appartment, Suite, etc...'
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className='row'>
+                <div className='column'>
+                  <div className='formGroup'>
+                    <div className='formLabel'>
+                      <label htmlFor='city'>City</label>
+                    </div>
+                    <div className='formInput'>
+                      <input
+                        type='text'
+                        id='city'
+                        name='city'
+                        placeholder='Your city...'
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className='column'>
+                  <div className='formGroup'>
+                    <div className='formLabel'>
+                      <label htmlFor='zipCode'>Zip Code</label>
+                    </div>
+                    <div className='formInput'>
+                      <input
+                        type='text'
+                        id='zipCode'
+                        name='zipCode'
+                        placeholder='Your zipCode...'
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

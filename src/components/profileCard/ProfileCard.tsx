@@ -1,33 +1,53 @@
 import React from 'react';
+import Profile from '../../models/Profile';
 import ProfilePicture from '../profilePicture/ProfilePicture';
 
 import './profileCard.css';
-const ProfileCard: React.FC = () => {
+
+interface IProfileCardProps {
+  profile: Profile;
+}
+
+const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
+  const {
+    name,
+    email,
+    phone,
+    profilePic,
+    website,
+    address: { street, city, suite, zipcode },
+  } = profile;
+  const addressText = `${suite}, ${street}, ${city}, ${zipcode}`;
+  const profileImgSrc = profilePic || '/images/profilePic.jpeg';
+  const websiteLink =
+    website.startsWith('http') || website.startsWith('www.')
+      ? website
+      : `https://${website}`;
   return (
     <div className='card'>
       <div className='profileHeader'>
-        <ProfilePicture />
+        <ProfilePicture imgSrc={profileImgSrc} />
       </div>
       <div className='profileBody'>
-        <h1 className='bodyHeaderText'>Lois Zemlak</h1>
+        <h1 className='bodyHeaderText'>{name}</h1>
         <li className='userInfo'>
           <span>
             <i className='fas fa-solid fa-envelope'></i>
           </span>
-          <span>Maida.Becker98@gmail.com</span>
+          <span>{email}</span>
         </li>
 
         <li className='userInfo'>
           <span>
             <i className='fas fa-solid fa-address-book'></i>
           </span>
-          <span>Cremin Plains St, Apt.462, North Connortown, 99373</span>
+          <span>{addressText}</span>
         </li>
 
         <li className='userInfo'>
           <span>
             <i className='fas fa-solid fa-phone'></i>
-            (293) 414-8005
+            {phone}
           </span>
         </li>
 
@@ -36,7 +56,7 @@ const ProfileCard: React.FC = () => {
             <i className='fas fa-solid fa-globe'></i>
           </span>
           <span>
-            <a href='marianne.org'>marianne.org</a>
+            <a href={websiteLink}>{website}</a>
           </span>
         </li>
         <div className='companyBanner'>
