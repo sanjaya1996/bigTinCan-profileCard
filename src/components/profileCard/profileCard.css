@@ -1,0 +1,86 @@
+.cardList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: var(--mainTransition);
+  margin-bottom: var(--spacing);
+  display: flex;
+  width: 800px;
+  flex-shrink: 0;
+  border-radius: 2%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.profileHeader {
+  width: 40%;
+  background: var(--primaryColor);
+  background: -webkit-linear-gradient(top left, var(--primaryColor), #ffe2bf);
+  background: -moz-linear-gradient(top left, var(--primaryColor), #ffe2bf);
+  background: linear-gradient(to bottom right, var(--primaryColor), #ffe2bf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileBody {
+  padding: var(--spacing);
+  width: 60%;
+}
+
+.bodyHeaderText {
+  padding-bottom: var(--spacing);
+}
+
+.profileBody li {
+  list-style: none;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  padding-bottom: var(--spacing);
+  color: var(--darkGrey);
+}
+
+.userInfo i {
+  margin-right: 10px;
+}
+
+.companyBanner {
+  padding-top: var(--spacing);
+}
+
+.companyBanner .logo {
+  width: 200px;
+  height: 50px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 850px) {
+  .card {
+    flex-direction: column;
+    height: auto;
+    width: auto;
+  }
+
+  .profileHeader {
+    height: 150px;
+    width: 100%;
+  }
+
+  .companyBanner .logo {
+    width: 150px;
+    height: 40px;
+  }
+}

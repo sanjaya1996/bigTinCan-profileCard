@@ -3,3 +3,31 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --primaryColor: #d44633;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --darkGrey: rgb(101, 119, 134);
+  --spacing: 20px;
+  --fontSize: 16px;
+  --mainTransition: all 0.3s linear;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: var(--mainWhite);
+  color: var(--mainBlack);
+  font-size: var(--fontSize);
+}
+
+h1 {
+  font-size: calc(var(--fontSize) * 1.9);
+}
+
+@media screen and (max-width: 850px) {
+  :root {
+    --spacing: 15px;
+    --fontSize: 14px;
+  }
+}
