@@ -6,6 +6,7 @@
 
 :root {
   --primaryColor: #d44633;
+  --secondaryColor: #ffe2bf;
   --mainWhite: #fff;
   --mainBlack: #222;
   --darkGrey: rgb(101, 119, 134);
@@ -22,7 +23,7 @@ body {
 }
 
 h1 {
-  font-size: calc(var(--fontSize) * 1.9);
+  font-size: calc(var(--fontSize) * 1.68);
 }
 
 @media screen and (max-width: 850px) {
