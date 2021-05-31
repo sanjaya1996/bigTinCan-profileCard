@@ -3,25 +3,26 @@ import ModalLayout from './ModalLayout';
 
 import './modal.css';
 import Input, { InputIdType } from '../Input/Input';
+import { useDispatch } from 'react-redux';
+
+import * as profilesActions from '../../store/actions/profiles/profileActions';
 
 interface IModalProps {
-  onCloseModal: () => void;
-  onSubmit: (id?: string) => void;
+  handleClose: () => void;
 }
 
-const EditProfileModal: React.FC<IModalProps> = ({
-  onCloseModal,
-  onSubmit,
-}) => {
+const EditProfileModal: React.FC<IModalProps> = ({ handleClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [street, setStreet] = useState('');
   const [suite, setSuite] = useState('');
   const [city, setCity] = useState('');
-  const [zipCode, setZipCode] = useState('');
+  const [zipcode, setZipcode] = useState('');
   const [phone, setPhone] = useState('');
   const [website, setWebsite] = useState('');
   const [profilePic, setProfilePic] = useState('');
+
+  const dispatch = useDispatch();
 
   const submitHandler = () => {
     const isValid = (value: string) => {
@@ -34,7 +35,7 @@ const EditProfileModal: React.FC<IModalProps> = ({
       isValid(street) &&
       isValid(suite) &&
       isValid(city) &&
-      isValid(zipCode) &&
+      isValid(zipcode) &&
       isValid(phone) &&
       isValid(website);
 
@@ -42,7 +43,20 @@ const EditProfileModal: React.FC<IModalProps> = ({
       return alert('Form is not Valid, Make sure all fields are not empty');
     }
 
-    onSubmit();
+    dispatch(
+      profilesActions.createProfile({
+        name,
+        email,
+        street,
+        suite,
+        city,
+        zipcode,
+        phone,
+        website,
+      })
+    );
+
+    handleClose();
   };
 
   const textChangeHandler = (id: InputIdType, value: string) => {
@@ -62,8 +76,8 @@ const EditProfileModal: React.FC<IModalProps> = ({
       case 'city':
         setCity(value);
         break;
-      case 'zipCode':
-        setZipCode(value);
+      case 'zipcode':
+        setZipcode(value);
         break;
       case 'phone':
         setPhone(value);
@@ -82,7 +96,7 @@ const EditProfileModal: React.FC<IModalProps> = ({
   return (
     <ModalLayout>
       <div className='editProfile'>
-        <span className='close' onClick={onCloseModal}>
+        <span className='close' onClick={handleClose}>
           &times;
         </span>
         <h1>Add a new Profile</h1>
@@ -163,9 +177,9 @@ const EditProfileModal: React.FC<IModalProps> = ({
                   <Input
                     label='Zip Code'
                     type='text'
-                    id='zipCode'
-                    name='zipCode'
-                    value={zipCode}
+                    id='zipcode'
+                    name='zipcode'
+                    value={zipcode}
                     placeHolder='Your zipCode...'
                     handleChange={textChangeHandler}
                   />
@@ -196,7 +210,7 @@ const EditProfileModal: React.FC<IModalProps> = ({
 
           <div className='buttonsContainer'>
             <div className='cancelButton'>
-              <button type='button' onClick={onCloseModal}>
+              <button type='button' onClick={handleClose}>
                 Cancel
               </button>
             </div>

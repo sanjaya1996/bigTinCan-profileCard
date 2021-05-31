@@ -2,10 +2,13 @@ import { Dispatch } from 'react';
 import Profile from '../../../models/Profile';
 
 import {
+  ProfileCreate,
+  ProfileFormData,
   ProfilesDispatchTypes,
   PROFILES_FETCH_FAIL,
   PROFILES_FETCH_LOADING,
   PROFILES_FETCH_SUCCESS,
+  PROFILE_CREATE,
 } from './profilesActionTypes';
 
 export const fetchProfiles = () => {
@@ -33,8 +36,16 @@ export const fetchProfiles = () => {
           address: { street, suite, city, zipcode },
         } = resData[key] as Profile;
 
-        const newAddress = { street, suite, city, zipcode };
-        const newProfile = new Profile(name, email, newAddress, phone, website);
+        const newProfile = new Profile(
+          name,
+          email,
+          street,
+          suite,
+          city,
+          zipcode,
+          phone,
+          website
+        );
 
         loadedProfiles.push(newProfile);
       }
@@ -44,4 +55,8 @@ export const fetchProfiles = () => {
       dispatch({ type: PROFILES_FETCH_FAIL, payload: err.message });
     }
   };
+};
+
+export const createProfile = (profileData: ProfileFormData): ProfileCreate => {
+  return { type: PROFILE_CREATE, payload: profileData };
 };

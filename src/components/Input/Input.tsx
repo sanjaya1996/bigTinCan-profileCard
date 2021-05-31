@@ -8,7 +8,7 @@ export type InputIdType =
   | 'street'
   | 'suite'
   | 'city'
-  | 'zipCode'
+  | 'zipcode'
   | 'phone'
   | 'website'
   | 'profilePic';

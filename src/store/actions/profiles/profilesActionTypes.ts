@@ -7,6 +7,18 @@ export const PROFILE_CREATE = 'PROFILE_CREATE';
 export const PROFILE_UPDATE = 'PROFILE_UPDATE';
 export const PROFILE_DELETE = 'PROFILE_DELETE';
 
+export interface ProfileFormData {
+  name: string;
+  email: string;
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  phone: string;
+  website: string;
+  profilePic?: string;
+}
+
 export interface ProfilesFetchLoading {
   type: typeof PROFILES_FETCH_LOADING;
 }
@@ -23,12 +35,12 @@ export interface ProfilesFetchFail {
 
 export interface ProfileCreate {
   type: typeof PROFILE_CREATE;
-  payload: Profile;
+  payload: ProfileFormData;
 }
 
 export interface ProfileUpdate {
   type: typeof PROFILE_UPDATE;
-  payload: Profile;
+  payload: ProfileFormData;
 }
 
 export type ProfilesDispatchTypes =

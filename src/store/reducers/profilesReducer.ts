@@ -4,6 +4,7 @@ import {
   PROFILES_FETCH_FAIL,
   PROFILES_FETCH_LOADING,
   PROFILES_FETCH_SUCCESS,
+  PROFILE_CREATE,
 } from '../actions/profiles/profilesActionTypes';
 
 interface IDefaultState {
@@ -22,6 +23,25 @@ export const profilesReducer = (
       return { profiles: action.payload };
     case PROFILES_FETCH_FAIL:
       return { ...state, error: action.payload };
+    case PROFILE_CREATE:
+      const newProfile = new Profile(
+        action.payload.name,
+        action.payload.email,
+        action.payload.street,
+        action.payload.suite,
+        action.payload.city,
+        action.payload.zipcode,
+        action.payload.phone,
+        action.payload.website,
+        action.payload.profilePic
+      );
+
+      console.log(newProfile);
+
+      let newProfilesArray = [...state.profiles];
+      newProfilesArray.unshift(newProfile);
+
+      return { loading: false, profiles: newProfilesArray };
     default:
       return state;
   }

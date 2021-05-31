@@ -15,13 +15,10 @@ const AddButton = () => {
     setShowModal(true);
   };
 
-  const handleClose = () => {
+  const onCloseModal = () => {
     setShowModal(false);
   };
 
-  const submitHandler = () => {
-    setShowModal(false);
-  };
   return (
     <>
       <div className='buttonContainer'>
@@ -29,9 +26,7 @@ const AddButton = () => {
           <i className=' fas fa-solid fa-user-plus'></i>
         </button>
       </div>
-      {showModal && (
-        <EditProfileModal onCloseModal={handleClose} onSubmit={submitHandler} />
-      )}
+      {showModal && <EditProfileModal handleClose={onCloseModal} />}
     </>
   );
 };

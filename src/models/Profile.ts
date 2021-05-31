@@ -29,7 +29,10 @@ class Profile {
   constructor(
     name: string,
     email: string,
-    address: IAddress,
+    street: string,
+    suite: string,
+    city: string,
+    zipcode: string,
     phone: string,
     website: string,
     profilePic?: string
@@ -37,7 +40,7 @@ class Profile {
     this.id = new Date().toString() + Math.random();
     this.name = name;
     this.email = email;
-    this.address = address;
+    this.address = new Address(street, suite, city, zipcode);
     this.phone = phone;
     this.website = website;
     this.profilePic = profilePic;
