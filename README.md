@@ -12,9 +12,9 @@
 
 ## _Technologies_
 
-- ReactJS with TypeScript (ReactHooks & ES6 syntax)
-- Redux for state management
-- CSS with React
+- **_ReactJS_** with **_TypeScript_** (**_ReactHooks_** & **_ES6_** syntax)
+- **_Redux_** for state management
+- **_CSS_** with React
 
 ## _How to run this app?_
 
