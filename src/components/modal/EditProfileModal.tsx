@@ -6,21 +6,27 @@ import Input, { InputIdType } from '../Input/Input';
 import { useDispatch } from 'react-redux';
 
 import * as profilesActions from '../../store/actions/profiles/profileActions';
+import Profile from '../../models/Profile';
 
 interface IModalProps {
   handleClose: () => void;
+  profile?: Profile;
 }
 
-const EditProfileModal: React.FC<IModalProps> = ({ handleClose }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [street, setStreet] = useState('');
-  const [suite, setSuite] = useState('');
-  const [city, setCity] = useState('');
-  const [zipcode, setZipcode] = useState('');
-  const [phone, setPhone] = useState('');
-  const [website, setWebsite] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
+  const [name, setName] = useState(profile ? profile.name : '');
+  const [email, setEmail] = useState(profile ? profile.email : '');
+  const [street, setStreet] = useState(profile ? profile.address.street : '');
+  const [suite, setSuite] = useState(profile ? profile.address.suite : '');
+  const [city, setCity] = useState(profile ? profile.address.city : '');
+  const [zipcode, setZipcode] = useState(
+    profile ? profile.address.zipcode : ''
+  );
+  const [phone, setPhone] = useState(profile ? profile.phone : '');
+  const [website, setWebsite] = useState(profile ? profile.website : '');
+  const [profilePic, setProfilePic] = useState(
+    profile && profile.profilePic ? profile.profilePic : ''
+  );
 
   const dispatch = useDispatch();
 
@@ -43,18 +49,33 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose }) => {
       return alert('Form is not Valid, Make sure all fields are not empty');
     }
 
-    dispatch(
-      profilesActions.createProfile({
-        name,
-        email,
-        street,
-        suite,
-        city,
-        zipcode,
-        phone,
-        website,
-      })
-    );
+    if (profile) {
+      dispatch(
+        profilesActions.updateProfile(profile.id, {
+          name,
+          email,
+          street,
+          suite,
+          city,
+          zipcode,
+          phone,
+          website,
+        })
+      );
+    } else {
+      dispatch(
+        profilesActions.createProfile({
+          name,
+          email,
+          street,
+          suite,
+          city,
+          zipcode,
+          phone,
+          website,
+        })
+      );
+    }
 
     handleClose();
   };
@@ -99,7 +120,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose }) => {
         <span className='close' onClick={handleClose}>
           &times;
         </span>
-        <h1>Add a new Profile</h1>
+        <h1>{profile ? 'Edit Profile' : 'Add a new Profile'}</h1>
         <form className='profileForm'>
           <Input
             label='Name'
@@ -216,7 +237,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose }) => {
             </div>
             <div className='submitButton'>
               <button type='button' onClick={submitHandler}>
-                Add
+                {profile ? 'Update' : 'Add'}
               </button>
             </div>
           </div>

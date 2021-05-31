@@ -8,7 +8,9 @@ import {
   PROFILES_FETCH_FAIL,
   PROFILES_FETCH_LOADING,
   PROFILES_FETCH_SUCCESS,
+  ProfileUpdate,
   PROFILE_CREATE,
+  PROFILE_UPDATE,
 } from './profilesActionTypes';
 
 export const fetchProfiles = () => {
@@ -37,6 +39,7 @@ export const fetchProfiles = () => {
         } = resData[key] as Profile;
 
         const newProfile = new Profile(
+          Date.now().toString + Math.random().toString(),
           name,
           email,
           street,
@@ -59,4 +62,11 @@ export const fetchProfiles = () => {
 
 export const createProfile = (profileData: ProfileFormData): ProfileCreate => {
   return { type: PROFILE_CREATE, payload: profileData };
+};
+
+export const updateProfile = (
+  id: string,
+  profileData: ProfileFormData
+): ProfileUpdate => {
+  return { type: PROFILE_UPDATE, payload: { id, profileData } };
 };

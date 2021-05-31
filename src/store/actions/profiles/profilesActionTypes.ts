@@ -40,7 +40,7 @@ export interface ProfileCreate {
 
 export interface ProfileUpdate {
   type: typeof PROFILE_UPDATE;
-  payload: ProfileFormData;
+  payload: { id: string; profileData: ProfileFormData };
 }
 
 export type ProfilesDispatchTypes =

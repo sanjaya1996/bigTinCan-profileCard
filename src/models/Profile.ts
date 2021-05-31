@@ -19,7 +19,7 @@ export class Address implements IAddress {
 }
 
 class Profile {
-  readonly id: string;
+  id: string;
   name: string;
   email: string;
   address: IAddress;
@@ -27,6 +27,7 @@ class Profile {
   website: string;
   profilePic?: string;
   constructor(
+    id: string,
     name: string,
     email: string,
     street: string,
@@ -37,13 +38,13 @@ class Profile {
     website: string,
     profilePic?: string
   ) {
-    this.id = new Date().toString() + Math.random();
+    this.id = id;
     this.name = name;
     this.email = email;
     this.address = new Address(street, suite, city, zipcode);
     this.phone = phone;
     this.website = website;
-    this.profilePic = profilePic;
+    this.profilePic = profilePic || '';
   }
 }
 

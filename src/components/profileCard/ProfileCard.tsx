@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Profile from '../../models/Profile';
+import EditProfileModal from '../modal/EditProfileModal';
 import ProfilePicture from '../profilePicture/ProfilePicture';
 
 import './profileCard.css';
@@ -9,6 +10,8 @@ interface IProfileCardProps {
 }
 
 const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
+  const [showModal, setShowModal] = useState(false);
+
   const {
     name,
     email,
@@ -23,6 +26,10 @@ const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
     website.startsWith('http') || website.startsWith('www.')
       ? website
       : `https://${website}`;
+
+  const onShowModal = () => setShowModal(true);
+  const onCloseModal = () => setShowModal(false);
+
   return (
     <div className='card'>
       <div className='profileHeader'>
@@ -69,6 +76,16 @@ const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
           <div className='companyInfo'></div>
         </div>
       </div>
+
+      <div className='cardButton close'>
+        <span>&times;</span>
+      </div>
+      <div onClick={onShowModal} className='cardButton edit'>
+        <span>Edit</span>
+      </div>
+      {showModal && (
+        <EditProfileModal handleClose={onCloseModal} profile={profile} />
+      )}
     </div>
   );
 };

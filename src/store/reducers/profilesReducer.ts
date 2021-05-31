@@ -5,6 +5,7 @@ import {
   PROFILES_FETCH_LOADING,
   PROFILES_FETCH_SUCCESS,
   PROFILE_CREATE,
+  PROFILE_UPDATE,
 } from '../actions/profiles/profilesActionTypes';
 
 interface IDefaultState {
@@ -25,6 +26,7 @@ export const profilesReducer = (
       return { ...state, error: action.payload };
     case PROFILE_CREATE:
       const newProfile = new Profile(
+        Date.now().toString + Math.random().toString(),
         action.payload.name,
         action.payload.email,
         action.payload.street,
@@ -35,13 +37,35 @@ export const profilesReducer = (
         action.payload.website,
         action.payload.profilePic
       );
-
-      console.log(newProfile);
-
       let newProfilesArray = [...state.profiles];
       newProfilesArray.unshift(newProfile);
 
       return { loading: false, profiles: newProfilesArray };
+
+    case PROFILE_UPDATE:
+      const profileId = action.payload.id;
+      const profileData = action.payload.profileData;
+
+      const profileIndex = state.profiles.findIndex(
+        (prof) => prof.id === profileId
+      );
+
+      const updatedProfile = new Profile(
+        profileId,
+        profileData.name,
+        profileData.email,
+        profileData.street,
+        profileData.suite,
+        profileData.city,
+        profileData.zipcode,
+        profileData.phone,
+        profileData.website,
+        profileData.profilePic
+      );
+
+      const updatedProfilesArray = [...state.profiles];
+      updatedProfilesArray[profileIndex] = updatedProfile;
+      return { ...state, profiles: updatedProfilesArray };
     default:
       return state;
   }

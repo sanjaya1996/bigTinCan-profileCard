@@ -8,6 +8,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: var(--mainTransition);
   margin-bottom: var(--spacing);
+  position: relative;
   display: flex;
   width: 850px;
   flex-shrink: 0;
@@ -67,11 +68,40 @@
   height: 100%;
 }
 
+.cardButton {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  right: var(--spacing);
+  transition: var(--mainTransition);
+}
+
+.cardButton.close {
+  top: var(--spacing);
+  font-size: large;
+  color: black;
+}
+
+.cardButton.edit {
+  bottom: var(--spacing);
+  color: var(--primaryColor);
+  text-decoration: underline;
+}
+
+.editButton button {
+  background: none;
+}
+
+.card:hover .cardButton {
+  display: block;
+}
+
 @media screen and (max-width: 850px) {
   .card {
     flex-direction: column;
     height: auto;
     width: auto;
+    min-width: 100%;
   }
 
   .profileHeader {
