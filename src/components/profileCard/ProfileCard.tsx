@@ -32,7 +32,15 @@ const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
       ? website
       : `https://${website}`;
 
-  const onShowModal = () => setShowModal(true);
+  const onShowModal = () => {
+    setShowModal(true);
+    window.onclick = function (event: MouseEvent) {
+      const modal = document.getElementById('modalLayout');
+      if (event.target === modal) {
+        setShowModal(false);
+      }
+    };
+  };
   const onCloseModal = () => setShowModal(false);
 
   const deleteProfileHandler = () => {

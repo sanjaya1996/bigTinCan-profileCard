@@ -1,5 +1,6 @@
 import { BIGTINCAN_PROFILES } from '../../data/profiles';
 import Profile from '../../models/Profile';
+import { generateUniqueId } from '../../utils/uniqueId';
 import {
   ProfilesDispatchTypes,
   PROFILES_FETCH_FAIL,
@@ -28,7 +29,7 @@ export const profilesReducer = (
       return { ...state, error: action.payload };
     case PROFILE_CREATE:
       const newProfile = new Profile(
-        Date.now().toString + Math.random().toString(),
+        generateUniqueId(),
         action.payload.name,
         action.payload.email,
         action.payload.street,

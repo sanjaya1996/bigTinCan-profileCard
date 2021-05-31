@@ -1,5 +1,6 @@
 import { Dispatch } from 'react';
 import Profile from '../../../models/Profile';
+import { generateUniqueId } from '../../../utils/uniqueId';
 
 import {
   ProfileCreate,
@@ -41,7 +42,7 @@ export const fetchProfiles = () => {
         } = resData[key] as Profile;
 
         const newProfile = new Profile(
-          Date.now().toString + Math.random().toString(),
+          generateUniqueId(),
           name,
           email,
           street,

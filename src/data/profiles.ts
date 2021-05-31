@@ -1,8 +1,9 @@
 import Profile from '../models/Profile';
+import { generateUniqueId } from '../utils/uniqueId';
 
 export const BIGTINCAN_PROFILES = [
   new Profile(
-    Date.now().toString() + Math.random().toString(),
+    generateUniqueId(),
     'Laura Leverington',
     'lauraLeverington@gmail.com',
     'Pitt St',
@@ -15,7 +16,7 @@ export const BIGTINCAN_PROFILES = [
   ),
 
   new Profile(
-    Date.now().toString() + Math.random().toString(),
+    generateUniqueId(),
     'Maty Brennan',
     'matybrennan@gmail.com',
     'Pitt St',
@@ -28,7 +29,7 @@ export const BIGTINCAN_PROFILES = [
   ),
 
   new Profile(
-    Date.now().toString() + Math.random().toString(),
+    generateUniqueId(),
     'Cameron Hadley',
     'cameronhadley@gmail.com',
     'Pitt St',
@@ -41,7 +42,7 @@ export const BIGTINCAN_PROFILES = [
   ),
 
   new Profile(
-    Date.now().toString() + Math.random().toString(),
+    generateUniqueId(),
     'David Kaene',
     'davidKaene@gmail.com',
     'Pitt St',
@@ -54,7 +55,7 @@ export const BIGTINCAN_PROFILES = [
   ),
 
   new Profile(
-    Date.now().toString() + Math.random().toString(),
+    generateUniqueId(),
     'Patrick Welch',
     'patrickwelch@gmail.com',
     'Pitt St',
