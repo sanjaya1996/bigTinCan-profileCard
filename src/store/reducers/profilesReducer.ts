@@ -1,3 +1,4 @@
+import { BIGTINCAN_PROFILES } from '../../data/profiles';
 import Profile from '../../models/Profile';
 import {
   ProfilesDispatchTypes,
@@ -15,14 +16,14 @@ interface IDefaultState {
   error?: string;
 }
 export const profilesReducer = (
-  state: IDefaultState = { profiles: [] },
+  state: IDefaultState = { profiles: BIGTINCAN_PROFILES },
   action: ProfilesDispatchTypes
 ): IDefaultState => {
   switch (action.type) {
     case PROFILES_FETCH_LOADING:
       return { ...state, loading: true };
     case PROFILES_FETCH_SUCCESS:
-      return { profiles: action.payload };
+      return { profiles: state.profiles.concat(action.payload) };
     case PROFILES_FETCH_FAIL:
       return { ...state, error: action.payload };
     case PROFILE_CREATE:
