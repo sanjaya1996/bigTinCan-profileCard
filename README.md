@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+> # Profile Card - Bigtincan <img src="https://marvel-b1-cdn.bc0a.com/f00000000228004/4eal4a38i3ij2gt3g51zqj5p-wpengine.netdna-ssl.com/wp-content/uploads/brand-bigtincan.png"  height="50" />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./screenshots/largeScreen.JPG?raw=true"  height= '300' />&nbsp;&nbsp;
+<img src="./screenshots/smallScreen.JPG?raw=true"  height= '300' />&nbsp;&nbsp;
 
-## Available Scripts
+## _Features_
 
-In the project directory, you can run:
+- List user profile card (appealing & responsive design)
+- Ability to edit an existing profile
+- Ability to add a new profile
+- Ability to delete an existing profile
 
-### `npm start`
+## _Technologies_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- ReactJS with TypeScript (ReactHooks, Es6 syntax)
+- Redux for state management
+- CSS with React
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## _How to run this app?_
 
-### `npm test`
+- Make sure you have Node.JS installed in your system or visit[ nodejs.org/en/download/](https://nodejs.org/en/download/) and download the latest version
+- Run the following Commands:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ git clone https://github.com/sanjaya1996/bigTinCan-profileCard.git
+$ npm install
+$ npm start
+```
 
-### `npm run build`
+- That's it, you are done. Your app is running on [localhost:3000](http://localhost:3000) .
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## _Developer: Sanjay Dahal @[Bigtincan](https://www.bigtincan.com/)_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="https://marvel-b1-cdn.bc0a.com/f00000000228004/4eal4a38i3ij2gt3g51zqj5p-wpengine.netdna-ssl.com/wp-content/uploads/brand-bigtincan.png"  />
