@@ -43,9 +43,15 @@ export interface ProfileUpdate {
   payload: { id: string; profileData: ProfileFormData };
 }
 
+export interface ProfileDelete {
+  type: typeof PROFILE_DELETE;
+  payload: string;
+}
+
 export type ProfilesDispatchTypes =
   | ProfilesFetchLoading
   | ProfilesFetchSuccess
   | ProfilesFetchFail
   | ProfileCreate
-  | ProfileUpdate;
+  | ProfileUpdate
+  | ProfileDelete;

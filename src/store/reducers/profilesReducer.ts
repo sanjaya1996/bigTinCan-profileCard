@@ -5,6 +5,7 @@ import {
   PROFILES_FETCH_LOADING,
   PROFILES_FETCH_SUCCESS,
   PROFILE_CREATE,
+  PROFILE_DELETE,
   PROFILE_UPDATE,
 } from '../actions/profiles/profilesActionTypes';
 
@@ -66,6 +67,13 @@ export const profilesReducer = (
       const updatedProfilesArray = [...state.profiles];
       updatedProfilesArray[profileIndex] = updatedProfile;
       return { ...state, profiles: updatedProfilesArray };
+
+    case PROFILE_DELETE:
+      return {
+        profiles: state.profiles.filter(
+          (profile) => profile.id !== action.payload
+        ),
+      };
     default:
       return state;
   }

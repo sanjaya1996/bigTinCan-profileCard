@@ -3,6 +3,7 @@ import Profile from '../../../models/Profile';
 
 import {
   ProfileCreate,
+  ProfileDelete,
   ProfileFormData,
   ProfilesDispatchTypes,
   PROFILES_FETCH_FAIL,
@@ -10,6 +11,7 @@ import {
   PROFILES_FETCH_SUCCESS,
   ProfileUpdate,
   PROFILE_CREATE,
+  PROFILE_DELETE,
   PROFILE_UPDATE,
 } from './profilesActionTypes';
 
@@ -69,4 +71,8 @@ export const updateProfile = (
   profileData: ProfileFormData
 ): ProfileUpdate => {
   return { type: PROFILE_UPDATE, payload: { id, profileData } };
+};
+
+export const deleteProfile = (id: string): ProfileDelete => {
+  return { type: PROFILE_DELETE, payload: id };
 };

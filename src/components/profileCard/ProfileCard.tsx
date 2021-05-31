@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Profile from '../../models/Profile';
 import EditProfileModal from '../modal/EditProfileModal';
 import ProfilePicture from '../profilePicture/ProfilePicture';
+import * as profilesActions from '../../store/actions/profiles/profileActions';
 
 import './profileCard.css';
 
@@ -12,7 +14,10 @@ interface IProfileCardProps {
 const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
   const [showModal, setShowModal] = useState(false);
 
+  const dispatch = useDispatch();
+
   const {
+    id,
     name,
     email,
     phone,
@@ -29,6 +34,16 @@ const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
 
   const onShowModal = () => setShowModal(true);
   const onCloseModal = () => setShowModal(false);
+
+  const deleteProfileHandler = () => {
+    if (
+      window.confirm('Are you Sure? Do you really want to delete ' + name + '?')
+    ) {
+      dispatch(profilesActions.deleteProfile(id));
+    } else {
+      return console.log('Thanks for conforming.');
+    }
+  };
 
   return (
     <div className='card'>
@@ -77,7 +92,7 @@ const ProfileCard: React.FC<IProfileCardProps> = ({ profile }) => {
         </div>
       </div>
 
-      <div className='cardButton close'>
+      <div onClick={deleteProfileHandler} className='cardButton close'>
         <span>&times;</span>
       </div>
       <div onClick={onShowModal} className='cardButton edit'>
