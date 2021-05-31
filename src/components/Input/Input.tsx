@@ -32,22 +32,36 @@ const Input: React.FC<IInputProps> = ({
   placeHolder,
   handleChange,
 }) => {
+  const fileChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      handleChange(id, url);
+    } else {
+      console.log('No file selected');
+    }
+  };
+
   return (
     <div className='formGroup'>
       <div className='formLabel'>
         <label htmlFor='name'>{label}</label>
       </div>
       <div className='formInput'>
-        <input
-          type={type}
-          id={id}
-          name={name}
-          value={value}
-          placeholder={placeHolder}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleChange(id, e.target.value)
-          }
-        />
+        {type === 'file' ? (
+          <input type={type} id={id} name={name} onChange={fileChangeHandler} />
+        ) : (
+          <input
+            type={type}
+            id={id}
+            name={name}
+            value={value}
+            placeholder={placeHolder}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleChange(id, event.target.value)
+            }
+          />
+        )}
       </div>
     </div>
   );

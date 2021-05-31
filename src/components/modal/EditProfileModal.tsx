@@ -60,6 +60,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
           zipcode,
           phone,
           website,
+          profilePic,
         })
       );
     } else {
@@ -73,6 +74,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
           zipcode,
           phone,
           website,
+          profilePic,
         })
       );
     }
@@ -80,7 +82,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
     handleClose();
   };
 
-  const textChangeHandler = (id: InputIdType, value: string) => {
+  const inputChangeHandler = (id: InputIdType, value: string) => {
     switch (id) {
       case 'name':
         setName(value);
@@ -129,7 +131,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
             name='name'
             value={name}
             placeHolder='Your name...'
-            handleChange={textChangeHandler}
+            handleChange={inputChangeHandler}
           />
 
           <Input
@@ -139,7 +141,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
             name='profilePic'
             value={profilePic}
             placeHolder='Your picture...'
-            handleChange={textChangeHandler}
+            handleChange={inputChangeHandler}
           />
 
           <Input
@@ -149,7 +151,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
             name='email'
             value={email}
             placeHolder='Your email...'
-            handleChange={textChangeHandler}
+            handleChange={inputChangeHandler}
           />
 
           <div className='formGroup'>
@@ -166,7 +168,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
                     name='street'
                     value={street}
                     placeHolder='Street name...'
-                    handleChange={textChangeHandler}
+                    handleChange={inputChangeHandler}
                   />
                 </div>
                 <div className='column'>
@@ -177,7 +179,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
                     name='suite'
                     value={suite}
                     placeHolder='Appartment, Suite, etc...'
-                    handleChange={textChangeHandler}
+                    handleChange={inputChangeHandler}
                   />
                 </div>
               </div>
@@ -191,7 +193,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
                     name='city'
                     value={city}
                     placeHolder='Your city...'
-                    handleChange={textChangeHandler}
+                    handleChange={inputChangeHandler}
                   />
                 </div>
                 <div className='column'>
@@ -202,7 +204,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
                     name='zipcode'
                     value={zipcode}
                     placeHolder='Your zipCode...'
-                    handleChange={textChangeHandler}
+                    handleChange={inputChangeHandler}
                   />
                 </div>
               </div>
@@ -216,7 +218,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
             name='phoneNumber'
             value={phone}
             placeHolder='Your name...'
-            handleChange={textChangeHandler}
+            handleChange={inputChangeHandler}
           />
 
           <Input
@@ -226,7 +228,7 @@ const EditProfileModal: React.FC<IModalProps> = ({ handleClose, profile }) => {
             name='website'
             value={website}
             placeHolder='Your website url...'
-            handleChange={textChangeHandler}
+            handleChange={inputChangeHandler}
           />
 
           <div className='buttonsContainer'>
