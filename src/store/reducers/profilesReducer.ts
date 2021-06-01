@@ -26,7 +26,7 @@ export const profilesReducer = (
     case PROFILES_FETCH_SUCCESS:
       return { profiles: state.profiles.concat(action.payload) };
     case PROFILES_FETCH_FAIL:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     case PROFILE_CREATE:
       const newProfile = new Profile(
         generateUniqueId(),
